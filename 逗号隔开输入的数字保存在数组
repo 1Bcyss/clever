@@ -1,0 +1,13 @@
+    public static void main(String[] args) {
+        Scanner snc = new Scanner(System.in);
+        String input=snc.nextLine();
+        //parts是输入的数字 但是存储类型是 String
+        String[] parts = input.split(",");
+        /*
+这行代码的作用是将字符串数组 parts 中的每个元素转换为整数，并将这些整数存储在一个新的整数数组中。具体分解如下：
+Arrays.stream(parts)：将字符串数组 parts 转换为一个流（Stream）。流是 Java 8 引入的用于处理集合的功能，可以进行一系列操作，比如过滤、映射等。
+.mapToInt(Integer::parseInt)：这是一个映射操作，将流中的每个字符串元素转换为整数。Integer::parseInt 是一种方法引用，它表示将每个字符串传递给 Integer.parseInt 方法进行转换。
+.toArray()：将流中的整数收集到一个新的整数数组中并返回。
+         */
+        int[] nums = Arrays.stream(parts).mapToInt(Integer::parseInt).toArray();
+        System.out.println(massage(nums));
