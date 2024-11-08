@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    // 生成排列的方法
+    public static void generatePermutations(int[] nums, int index, List<List<Integer>> result) {
+        // 如果已经排列了所有元素，添加当前排列到结果中
+        if (index == nums.length) {
+            List<Integer> permutation = new ArrayList<>();
+            for (int num : nums) {
+                permutation.add(num);
+            }
+            result.add(permutation);
+            return;
+        }
+
+        // 递归生成排列
+        for (int i = index; i < nums.length; i++) {
+            // 交换当前元素与元素index
+            swap(nums, index, i);
+            // 递归调用
+            generatePermutations(nums, index + 1, result);
+            // 回溯
+            swap(nums, index, i);  // 恢复交换
+        }
+    }
+
+    // 交换数组中两个元素的位置
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> result = new ArrayList<>();
+
+        // 生成所有排列
+        generatePermutations(nums, 0, result);
+
+        // 输出所有排列
+        for (List<Integer> permutation : result) {
+            System.out.println(permutation);
+        }
+    }
+}
