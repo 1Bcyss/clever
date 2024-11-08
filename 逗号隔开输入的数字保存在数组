@@ -11,3 +11,18 @@ Arrays.stream(parts)：将字符串数组 parts 转换为一个流（Stream）�
          */
         int[] nums = Arrays.stream(parts).mapToInt(Integer::parseInt).toArray();
         System.out.println(massage(nums));
+
+
+方法2：
+   public static void main(String[] args)  {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();  // 输入数组字符串
+        // 将输入的字符串转换为整数数组
+        String[] inputArray = input.split(",");
+
+        int[] arr = new int[inputArray.length];
+        for (int i = 0; i < inputArray.length; i++) {
+            arr[i] = Integer.parseInt(inputArray[i].trim());
+        }
+
+      }
